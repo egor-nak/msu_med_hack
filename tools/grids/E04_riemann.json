@@ -1,0 +1,148 @@
+{
+ "ts_base": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "ts_sm9": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor9",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "ts_ref_none": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "none",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "ts_ref_lap": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "laplacian",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "ts_lr_C0.01": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "lr",
+   "C": 0.01
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "ts_lr_C0.1": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "lr",
+   "C": 0.1
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "ts_lr_C1": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "lr",
+   "C": 1.0
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "ts_cov_lw": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "lw",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "ts_mean_riemann": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "riemann",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "mdm": {
+  "eeg": {
+   "features": "mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "ts+mdm": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "sess_only": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  }
+ },
+ "glob_k0.5": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "global": {
+   "enabled": true,
+   "k": 0.5
+  }
+ },
+ "glob_k1": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "global": {
+   "enabled": true,
+   "k": 1
+  }
+ },
+ "glob_k2": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "global": {
+   "enabled": true,
+   "k": 2
+  }
+ },
+ "glob_k4": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "global": {
+   "enabled": true,
+   "k": 4
+  }
+ },
+ "glob_kinf": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "global": {
+   "enabled": true,
+   "k": "inf"
+  }
+ }
+}

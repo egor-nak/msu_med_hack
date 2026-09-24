@@ -1,0 +1,34 @@
+{
+ "by_group": [
+  {
+   "group": "сильный >6 дБ",
+   "recall": 0.6135,
+   "recall_eeg": 0.5873,
+   "recall_early": 0.6148,
+   "imag_detect": 0.8827,
+   "n": 537
+  },
+  {
+   "group": "слабый <2 дБ",
+   "recall": 0.4564,
+   "recall_eeg": 0.4301,
+   "recall_early": 0.4543,
+   "imag_detect": 0.7737,
+   "n": 589
+  },
+  {
+   "group": "средний",
+   "recall": 0.5543,
+   "recall_eeg": 0.5259,
+   "recall_early": 0.5222,
+   "imag_detect": 0.8289,
+   "n": 218
+  }
+ ],
+ "n_sessions_paired": 41,
+ "paired_mean": {
+  "сильный >6 дБ": 0.5816,
+  "слабый <2 дБ": 0.4716
+ },
+ "wilcoxon_p": 0.00013969240626465762
+}

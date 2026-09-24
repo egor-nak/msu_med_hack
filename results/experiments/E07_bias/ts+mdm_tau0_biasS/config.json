@@ -1,0 +1,21 @@
+{
+  "cfg": {
+    "eeg": {
+      "features": "ts+mdm",
+      "channels": "sensorimotor11",
+      "reference": "car_clean",
+      "cov": "oas",
+      "mean": "logeuclid",
+      "classifier": "slda",
+      "cov_avg_n": 5
+    },
+    "smoothing": {
+      "tau_s": 0
+    },
+    "bias": {
+      "mode": "session"
+    }
+  },
+  "loso": null,
+  "n_sessions": 56
+}

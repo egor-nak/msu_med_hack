@@ -1,0 +1,11 @@
+{
+ "b2_original_all17": {
+  "preset": "b2_original"
+ },
+ "b2_original_sm11": {
+  "preset": "b2_original",
+  "eeg": {
+   "channels": "sensorimotor11"
+  }
+ }
+}

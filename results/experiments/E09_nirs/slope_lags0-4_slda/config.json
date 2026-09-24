@@ -1,0 +1,48 @@
+{
+  "cfg": {
+    "eeg": {
+      "features": "logpower",
+      "channels": "sensorimotor11",
+      "reference": "car_clean",
+      "bands": [
+        [
+          4,
+          8
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          16,
+          20
+        ],
+        [
+          20,
+          24
+        ],
+        [
+          24,
+          30
+        ]
+      ]
+    },
+    "smoothing": {
+      "tau_s": 0.0
+    },
+    "nirs": {
+      "use_level": false,
+      "lags_s": [
+        0,
+        2,
+        4
+      ]
+    }
+  },
+  "loso": null,
+  "n_sessions": 56
+}

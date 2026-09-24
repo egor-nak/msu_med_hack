@@ -1,0 +1,74 @@
+{
+ "C_tsmdmLE_rcall_k2": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5,
+   "mdm_metric": "logeuclid"
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0
+  },
+  "global": {
+   "enabled": true,
+   "k": 2,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  }
+ },
+ "C_tsmdmLE_rcall_k4": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5,
+   "mdm_metric": "logeuclid"
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0
+  },
+  "global": {
+   "enabled": true,
+   "k": 4,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  }
+ },
+ "C_tsmdmLE_rcall_k8": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5,
+   "mdm_metric": "logeuclid"
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0
+  },
+  "global": {
+   "enabled": true,
+   "k": 8,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  }
+ }
+}

@@ -1,0 +1,118 @@
+{
+ "ts_tau0_biasS": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0
+  },
+  "bias": {
+   "mode": "session"
+  }
+ },
+ "ts_tau0.5_biasS": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "bias": {
+   "mode": "session"
+  }
+ },
+ "mdm_tau0_biasS": {
+  "eeg": {
+   "features": "mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0
+  },
+  "bias": {
+   "mode": "session"
+  }
+ },
+ "mdm_tau0.5_biasS": {
+  "eeg": {
+   "features": "mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "bias": {
+   "mode": "session"
+  }
+ },
+ "ts+mdm_tau0_biasS": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0
+  },
+  "bias": {
+   "mode": "session"
+  }
+ },
+ "ts+mdm_tau0.5_biasS": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "bias": {
+   "mode": "session"
+  }
+ },
+ "ts+mdm_tau0.5_nobias": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  }
+ }
+}

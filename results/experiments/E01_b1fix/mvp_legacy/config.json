@@ -1,0 +1,7 @@
+{
+  "cfg": {
+    "_impl": "mvp_classifier"
+  },
+  "loso": null,
+  "n_sessions": 56
+}

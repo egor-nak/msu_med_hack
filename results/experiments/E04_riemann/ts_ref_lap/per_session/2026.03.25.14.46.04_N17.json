@@ -1,0 +1,111 @@
+{
+  "status": "ok",
+  "session": "/Users/egornakonecnyj/Desktop/2503-support-academy-oligomery-1d85e81/data/train/2026.03.25.14.46.04_N17.mat",
+  "hybrid": {
+    "confusion": [
+      [
+        641,
+        48,
+        88
+      ],
+      [
+        26,
+        243,
+        73
+      ],
+      [
+        106,
+        96,
+        227
+      ]
+    ],
+    "f1": {
+      "1": 0.8270967741935484,
+      "2": 0.6666666666666666,
+      "3": 0.5556915544675642
+    },
+    "min_f1": 0.5556915544675642,
+    "macro_recall": 0.6807317543700218,
+    "n_windows": 1548
+  },
+  "nirs_only": {
+    "confusion": [
+      [
+        601,
+        65,
+        94
+      ],
+      [
+        47,
+        159,
+        125
+      ],
+      [
+        125,
+        163,
+        169
+      ]
+    ],
+    "f1": {
+      "1": 0.7840834964122635,
+      "2": 0.4428969359331476,
+      "3": 0.4
+    },
+    "min_f1": 0.4,
+    "macro_recall": 0.5413033403432056,
+    "n_windows": 1548
+  },
+  "timings": {
+    "predict_mean_s": 0.0013955652454780362,
+    "predict_max_s": 0.031746,
+    "fit_mean_s": 0.6601330000000001,
+    "fit_max_s": 1.284539,
+    "n_predict": 1548,
+    "n_fit": 7,
+    "penalty_predict": 0,
+    "penalty_fit": 0,
+    "penalty_total": 0
+  },
+  "score": {
+    "base_quality": 53.7634,
+    "nirs_bonus": {
+      "present": true,
+      "points": 11.0,
+      "min_f1": 0.4,
+      "macro_recall": 0.5413033403432056,
+      "detail": "валидная NIRS-only матрица"
+    },
+    "engineering": 0.0,
+    "penalties": 0,
+    "total": 64.7634,
+    "max_possible": 130.0
+  },
+  "eeg_only": {
+    "confusion": [
+      [
+        547,
+        58,
+        102
+      ],
+      [
+        82,
+        252,
+        77
+      ],
+      [
+        144,
+        77,
+        209
+      ]
+    ],
+    "f1": {
+      "1": 0.7391891891891892,
+      "2": 0.631578947368421,
+      "3": 0.511002444987775
+    },
+    "min_f1": 0.511002444987775,
+    "macro_recall": 0.6324850615902798,
+    "n_windows": 1548
+  },
+  "wall_s": 9.2
+}

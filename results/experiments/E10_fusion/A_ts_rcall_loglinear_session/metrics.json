@@ -1,0 +1,41 @@
+{
+  "status": "ok",
+  "aggregation": "unweighted_mean_over_sessions",
+  "n_sessions": 56,
+  "hybrid": {
+    "min_f1": 0.47920288311555786,
+    "macro_recall": 0.6098590407570464,
+    "n_windows": 86746,
+    "aggregation": "unweighted_mean_over_sessions",
+    "n_sessions": 56
+  },
+  "nirs_only": {
+    "min_f1": 0.40458616279364634,
+    "macro_recall": 0.5301593213194674,
+    "n_windows": 83647
+  },
+  "timings": {
+    "penalty_predict": 0,
+    "penalty_fit": 10,
+    "penalty_total": 10
+  },
+  "score": {
+    "base_quality": 47.0479,
+    "nirs_bonus": {
+      "present": true,
+      "points": 11.0688,
+      "min_f1": 0.40458616279364634,
+      "macro_recall": 0.5301593213194674,
+      "detail": "валидная NIRS-only матрица"
+    },
+    "engineering": 0.0,
+    "penalties": 10,
+    "total": 48.1167,
+    "max_possible": 130.0
+  },
+  "note": "Матрицы G не суммируются; ЭЭГ-only не входит в балл; см. per-session metrics.json",
+  "eeg_only_info": {
+    "min_f1": 0.44626996928000484,
+    "macro_recall": 0.5700549614160043
+  }
+}

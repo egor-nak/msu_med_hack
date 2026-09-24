@@ -1,0 +1,22 @@
+{
+  "cfg": {
+    "eeg": {
+      "features": "ts",
+      "channels": "sensorimotor11",
+      "reference": "car_clean",
+      "cov": "oas",
+      "mean": "logeuclid",
+      "classifier": "slda",
+      "cov_avg_n": 5
+    },
+    "smoothing": {
+      "tau_s": 0.5
+    },
+    "global": {
+      "enabled": true,
+      "k": 0.5
+    }
+  },
+  "loso": "/Users/egornakonecnyj/Desktop/2503-support-academy-oligomery-1d85e81/results/artifacts_exp/g_sm11_avg5/loso",
+  "n_sessions": 56
+}

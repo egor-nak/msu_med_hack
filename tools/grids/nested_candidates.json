@@ -1,0 +1,6 @@
+["E10_fusion/A_ts", "E10_fusion/A_ts_rcall", "E10_fusion/B_tsmdm", "E10_fusion/B_tsmdm_rcall",
+ "E10_fusion/C_tsmdmLE_rcall_k2", "E10_fusion/C_tsmdmLE_rcall_k4", "E10_fusion/C_tsmdmLE_rcall_k8",
+ "E10_fusion/D_norm_T1_k4", "E10_fusion/D_norm_T0.5_k4", "E10_fusion/D_norm_T2_k4", "E10_fusion/D_norm_T1_k2",
+ "E10_fusion/D_norm_T1_k8", "E10_fusion/D_norm_T1_k1", "E10_fusion/D_norm_T1_k0.5", "E10_fusion/D_norm_T0.5_k2",
+ "E10_fusion/D_norm_T0.5_k1", "E10_fusion/G_biasS", "E10_fusion/G_tau0.5", "E10_fusion/G_tsonly",
+ "E10_fusion/E_loglinear_session"]

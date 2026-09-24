@@ -1,0 +1,110 @@
+{
+ "MVP (с утечкой Δt):hyb_min_f1": {
+  "key": "hyb_min_f1",
+  "mean_diff_sessions": 0.03489642857142856,
+  "mean_diff_subjects": 0.03602238095238094,
+  "n_subjects_better": 11,
+  "n_subjects": 14,
+  "wilcoxon_p": 0.029541015625,
+  "ci95_diff": [
+   0.0011739504870129814,
+   0.07278825892857135
+  ]
+ },
+ "MVP (с утечкой Δt):hyb_recall": {
+  "key": "hyb_recall",
+  "mean_diff_sessions": 0.022400000000000003,
+  "mean_diff_subjects": 0.023152142857142868,
+  "n_subjects_better": 8,
+  "n_subjects": 14,
+  "wilcoxon_p": 0.067626953125,
+  "ci95_diff": [
+   0.0003431489028213154,
+   0.04826025974025974
+  ]
+ },
+ "MVP (с утечкой Δt):nirs_min_f1": {
+  "key": "nirs_min_f1",
+  "mean_diff_sessions": 0.020394444444444444,
+  "mean_diff_subjects": 0.02014059523809524,
+  "n_subjects_better": 11,
+  "n_subjects": 14,
+  "wilcoxon_p": 0.029541015625,
+  "ci95_diff": [
+   -0.00021493653516295883,
+   0.041530225918569995
+  ]
+ },
+ "B1-fix:hyb_min_f1": {
+  "key": "hyb_min_f1",
+  "mean_diff_sessions": 0.0854107142857143,
+  "mean_diff_subjects": 0.08712285714285714,
+  "n_subjects_better": 12,
+  "n_subjects": 14,
+  "wilcoxon_p": 0.0006103515625,
+  "ci95_diff": [
+   0.05024975,
+   0.12214775156739813
+  ]
+ },
+ "B1-fix:hyb_recall": {
+  "key": "hyb_recall",
+  "mean_diff_sessions": 0.08944107142857143,
+  "mean_diff_subjects": 0.0908507142857143,
+  "n_subjects_better": 14,
+  "n_subjects": 14,
+  "wilcoxon_p": 0.0001220703125,
+  "ci95_diff": [
+   0.0643271626984127,
+   0.11473066964285716
+  ]
+ },
+ "B1-fix:nirs_min_f1": {
+  "key": "nirs_min_f1",
+  "mean_diff_sessions": 0.04287592592592592,
+  "mean_diff_subjects": 0.04280738095238096,
+  "n_subjects_better": 13,
+  "n_subjects": 14,
+  "wilcoxon_p": 0.000244140625,
+  "ci95_diff": [
+   0.025032112573099407,
+   0.0608530290418054
+  ]
+ },
+ "B1-fix τ=0:hyb_min_f1": {
+  "key": "hyb_min_f1",
+  "mean_diff_sessions": 0.05387678571428571,
+  "mean_diff_subjects": 0.05522095238095237,
+  "n_subjects_better": 12,
+  "n_subjects": 14,
+  "wilcoxon_p": 0.008544921875,
+  "ci95_diff": [
+   0.019083991228070165,
+   0.08708623484848485
+  ]
+ },
+ "B1-fix τ=0:hyb_recall": {
+  "key": "hyb_recall",
+  "mean_diff_sessions": 0.05362678571428571,
+  "mean_diff_subjects": 0.053868333333333344,
+  "n_subjects_better": 13,
+  "n_subjects": 14,
+  "wilcoxon_p": 0.0006103515625,
+  "ci95_diff": [
+   0.030978685776942357,
+   0.07523924568965515
+  ]
+ },
+ "B1-fix τ=0:nirs_min_f1": {
+  "key": "nirs_min_f1",
+  "mean_diff_sessions": 0.011350000000000002,
+  "mean_diff_subjects": 0.011956190476190481,
+  "n_subjects_better": 8,
+  "n_subjects": 14,
+  "wilcoxon_p": 0.10400390625,
+  "ci95_diff": [
+   -0.005841208754208747,
+   0.02871654545454545
+  ]
+ }
+}

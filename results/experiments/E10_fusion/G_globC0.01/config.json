@@ -1,0 +1,31 @@
+{
+  "cfg": {
+    "eeg": {
+      "features": "ts+mdm",
+      "channels": "sensorimotor11",
+      "reference": "car_clean",
+      "cov": "oas",
+      "classifier": "slda",
+      "cov_avg_n": 5,
+      "mdm_metric": "logeuclid",
+      "logit_T": 1
+    },
+    "nirs": {
+      "use_level": false,
+      "hp_hz": 0.0,
+      "logit_T": 1
+    },
+    "global": {
+      "enabled": true,
+      "k": 1,
+      "recenter": "all"
+    },
+    "smoothing": {
+      "tau_s": 0.0,
+      "nirs_tau_s": 0.0
+    },
+    "_loso": "results/artifacts_exp/g_sm11_avg5_C0.01/loso"
+  },
+  "loso": "results/artifacts_exp/g_sm11_avg5_C0.01/loso",
+  "n_sessions": 56
+}

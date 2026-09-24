@@ -1,0 +1,111 @@
+{
+  "status": "ok",
+  "session": "/Users/egornakonecnyj/Desktop/2503-support-academy-oligomery-1d85e81/data/train/2026.03.25.14.46.04_N17.mat",
+  "hybrid": {
+    "confusion": [
+      [
+        642,
+        47,
+        72
+      ],
+      [
+        24,
+        246,
+        82
+      ],
+      [
+        107,
+        94,
+        234
+      ]
+    ],
+    "f1": {
+      "1": 0.8370273794002607,
+      "2": 0.6657645466847091,
+      "3": 0.56865127582017
+    },
+    "min_f1": 0.56865127582017,
+    "macro_recall": 0.6897606997562552,
+    "n_windows": 1548
+  },
+  "nirs_only": {
+    "confusion": [
+      [
+        601,
+        65,
+        94
+      ],
+      [
+        47,
+        159,
+        125
+      ],
+      [
+        125,
+        163,
+        169
+      ]
+    ],
+    "f1": {
+      "1": 0.7840834964122635,
+      "2": 0.4428969359331476,
+      "3": 0.4
+    },
+    "min_f1": 0.4,
+    "macro_recall": 0.5413033403432056,
+    "n_windows": 1548
+  },
+  "timings": {
+    "predict_mean_s": 0.0013220258397932815,
+    "predict_max_s": 0.014882,
+    "fit_mean_s": 0.488988,
+    "fit_max_s": 0.949095,
+    "n_predict": 1548,
+    "n_fit": 7,
+    "penalty_predict": 0,
+    "penalty_fit": 0,
+    "penalty_total": 0
+  },
+  "score": {
+    "base_quality": 54.8119,
+    "nirs_bonus": {
+      "present": true,
+      "points": 11.0,
+      "min_f1": 0.4,
+      "macro_recall": 0.5413033403432056,
+      "detail": "валидная NIRS-only матрица"
+    },
+    "engineering": 0.0,
+    "penalties": 0,
+    "total": 65.8119,
+    "max_possible": 130.0
+  },
+  "eeg_only": {
+    "confusion": [
+      [
+        522,
+        48,
+        83
+      ],
+      [
+        104,
+        268,
+        87
+      ],
+      [
+        147,
+        71,
+        218
+      ]
+    ],
+    "f1": {
+      "1": 0.7321178120617111,
+      "2": 0.6335697399527187,
+      "3": 0.529126213592233
+    },
+    "min_f1": 0.529126213592233,
+    "macro_recall": 0.6432177345966978,
+    "n_windows": 1548
+  },
+  "wall_s": 8.0
+}

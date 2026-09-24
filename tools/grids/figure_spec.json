@@ -1,0 +1,67 @@
+{
+ "final": "E12_final_loso/final",
+ "heog": "E02_conf/conf_heog",
+ "blocks": {
+  "MVP (утечка Δt)": "E00_mvp",
+  "B1-fix": "E01_b1fix/legacy_b1fix",
+  "B3 (TS, сессия)": "E11_controls/B3",
+  "B5 (перенос, k=1)": "E08_transfer/glob_k1",
+  "финал (LOSO)": "E12_final_loso/final"
+ },
+ "time": {
+  "MVP (утечка Δt)": "E00_mvp",
+  "B1-fix, τ=0": "E03_ablations/b1fix_tau0",
+  "B3": "E11_controls/B3",
+  "финал (LOSO)": "E12_final_loso/final"
+ },
+ "pipelines": {
+  "MVP\n(утечка Δt)": "E00_mvp",
+  "B1-fix": "E01_b1fix/legacy_b1fix",
+  "B1-fix τ=0": "E03_ablations/b1fix_tau0",
+  "B2 авторы": "E05_original/b2_original_all17",
+  "B3 TS": "E11_controls/B3",
+  "B4 MDM": "E04_riemann/mdm",
+  "B5 перенос": "E08_transfer/glob_k1",
+  "финал\n(LOSO)": "E12_final_loso/final",
+  "финал all17\n(LOSO)": "E11_controls/final_ch_all17"
+ },
+ "waterfall": [
+  [
+   "MVP (утечка Δt)",
+   "E00_mvp"
+  ],
+  [
+   "B1-fix: EMA по вызовам",
+   "E01_b1fix/legacy_b1fix"
+  ],
+  [
+   "τ = 0",
+   "E03_ablations/b1fix_tau0"
+  ],
+  [
+   "sensorimotor11 + TS",
+   "E04_riemann/ts_base"
+  ],
+  [
+   "cov_avg_n = 5",
+   "E06_smoothing/covavg5"
+  ],
+  [
+   "+MDM, глоб. модель k=4,\nNIRS-наклоны (LOSO)",
+   "E10_fusion/B_tsmdm"
+  ],
+  [
+   "адаптивное\nперецентрирование",
+   "E10_fusion/B_tsmdm_rcall"
+  ],
+  [
+   "нормировка логитов, k=1",
+   "E10_fusion/D_norm_T1_k1"
+  ],
+  [
+   "сессионные смещения\n= финал",
+   "E12_final_loso/final"
+  ]
+ ],
+ "chance": 0.236
+}

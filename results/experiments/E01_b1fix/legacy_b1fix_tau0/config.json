@@ -1,0 +1,8 @@
+{
+  "cfg": {
+    "_impl": "b1fix_classifier",
+    "tau_s": 0.0
+  },
+  "loso": null,
+  "n_sessions": 56
+}

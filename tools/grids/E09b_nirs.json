@@ -1,0 +1,418 @@
+{
+ "mvp_slda": {
+  "eeg": {
+   "features": "logpower",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "bands": [
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     20
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     24,
+     30
+    ]
+   ]
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  },
+  "nirs": {
+   "features": "mvp",
+   "hp_hz": 0.0,
+   "lp_hz": 0.0
+  }
+ },
+ "mvp_lr0.1": {
+  "eeg": {
+   "features": "logpower",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "bands": [
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     20
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     24,
+     30
+    ]
+   ]
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  },
+  "nirs": {
+   "features": "mvp",
+   "hp_hz": 0.0,
+   "lp_hz": 0.0,
+   "classifier": "lr",
+   "C": 0.1
+  }
+ },
+ "mvp_lr0.01": {
+  "eeg": {
+   "features": "logpower",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "bands": [
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     20
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     24,
+     30
+    ]
+   ]
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  },
+  "nirs": {
+   "features": "mvp",
+   "hp_hz": 0.0,
+   "lp_hz": 0.0,
+   "classifier": "lr",
+   "C": 0.01
+  }
+ },
+ "slope_slda": {
+  "eeg": {
+   "features": "logpower",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "bands": [
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     20
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     24,
+     30
+    ]
+   ]
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  },
+  "nirs": {
+   "use_level": false
+  }
+ },
+ "slope_lr0.1": {
+  "eeg": {
+   "features": "logpower",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "bands": [
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     20
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     24,
+     30
+    ]
+   ]
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  },
+  "nirs": {
+   "use_level": false,
+   "classifier": "lr",
+   "C": 0.1
+  }
+ },
+ "slope_lags0-4_slda": {
+  "eeg": {
+   "features": "logpower",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "bands": [
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     20
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     24,
+     30
+    ]
+   ]
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  },
+  "nirs": {
+   "use_level": false,
+   "lags_s": [
+    0,
+    2,
+    4
+   ]
+  }
+ },
+ "slope_nohp_slda": {
+  "eeg": {
+   "features": "logpower",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "bands": [
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     20
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     24,
+     30
+    ]
+   ]
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0
+  }
+ },
+ "hemo_nohp_slda": {
+  "eeg": {
+   "features": "logpower",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "bands": [
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     20
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     24,
+     30
+    ]
+   ]
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  },
+  "nirs": {
+   "hp_hz": 0.0
+  }
+ },
+ "mvp_bias": {
+  "eeg": {
+   "features": "logpower",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "bands": [
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     20
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     24,
+     30
+    ]
+   ]
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  },
+  "nirs": {
+   "features": "mvp",
+   "hp_hz": 0.0,
+   "lp_hz": 0.0
+  },
+  "bias": {
+   "mode": "session"
+  }
+ },
+ "slope_bias": {
+  "eeg": {
+   "features": "logpower",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "bands": [
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     12
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     16,
+     20
+    ],
+    [
+     20,
+     24
+    ],
+    [
+     24,
+     30
+    ]
+   ]
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  },
+  "nirs": {
+   "use_level": false
+  },
+  "bias": {
+   "mode": "session"
+  }
+ }
+}

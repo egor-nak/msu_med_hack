@@ -1,0 +1,34 @@
+{
+  "cfg": {
+    "eeg": {
+      "features": "ts",
+      "channels": "sensorimotor11",
+      "reference": "car_clean",
+      "cov": "oas",
+      "classifier": "slda",
+      "cov_avg_n": 5
+    },
+    "nirs": {
+      "use_level": false,
+      "hp_hz": 0.0
+    },
+    "global": {
+      "enabled": true,
+      "k": 4,
+      "recenter": "all"
+    },
+    "smoothing": {
+      "tau_s": 0.0,
+      "nirs_tau_s": 0.0
+    },
+    "fusion": {
+      "mode": "loglinear"
+    },
+    "bias": {
+      "mode": "global"
+    },
+    "_loso": "results/artifacts_exp/F_A_ts_rcall_loglinear/loso"
+  },
+  "loso": "results/artifacts_exp/F_A_ts_rcall_loglinear/loso",
+  "n_sessions": 56
+}

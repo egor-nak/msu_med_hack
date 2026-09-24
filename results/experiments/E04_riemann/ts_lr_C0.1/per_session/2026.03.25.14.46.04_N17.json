@@ -1,0 +1,111 @@
+{
+  "status": "ok",
+  "session": "/Users/egornakonecnyj/Desktop/2503-support-academy-oligomery-1d85e81/data/train/2026.03.25.14.46.04_N17.mat",
+  "hybrid": {
+    "confusion": [
+      [
+        641,
+        50,
+        91
+      ],
+      [
+        21,
+        209,
+        86
+      ],
+      [
+        111,
+        128,
+        211
+      ]
+    ],
+    "f1": {
+      "1": 0.8244372990353698,
+      "2": 0.5945945945945946,
+      "3": 0.5035799522673031
+    },
+    "min_f1": 0.5035799522673031,
+    "macro_recall": 0.6377009508501269,
+    "n_windows": 1548
+  },
+  "nirs_only": {
+    "confusion": [
+      [
+        601,
+        65,
+        94
+      ],
+      [
+        47,
+        159,
+        125
+      ],
+      [
+        125,
+        163,
+        169
+      ]
+    ],
+    "f1": {
+      "1": 0.7840834964122635,
+      "2": 0.4428969359331476,
+      "3": 0.4
+    },
+    "min_f1": 0.4,
+    "macro_recall": 0.5413033403432056,
+    "n_windows": 1548
+  },
+  "timings": {
+    "predict_mean_s": 0.0017512758397932816,
+    "predict_max_s": 0.038876,
+    "fit_mean_s": 0.9660169999999999,
+    "fit_max_s": 2.598737,
+    "n_predict": 1548,
+    "n_fit": 7,
+    "penalty_predict": 0,
+    "penalty_fit": 2,
+    "penalty_total": 2
+  },
+  "score": {
+    "base_quality": 49.3458,
+    "nirs_bonus": {
+      "present": true,
+      "points": 11.0,
+      "min_f1": 0.4,
+      "macro_recall": 0.5413033403432056,
+      "detail": "валидная NIRS-only матрица"
+    },
+    "engineering": 0.0,
+    "penalties": 2,
+    "total": 58.3458,
+    "max_possible": 130.0
+  },
+  "eeg_only": {
+    "confusion": [
+      [
+        567,
+        51,
+        86
+      ],
+      [
+        82,
+        261,
+        87
+      ],
+      [
+        124,
+        75,
+        215
+      ]
+    ],
+    "f1": {
+      "1": 0.7677725118483413,
+      "2": 0.6389228886168911,
+      "3": 0.5361596009975063
+    },
+    "min_f1": 0.5361596009975063,
+    "macro_recall": 0.6540160458220475,
+    "n_windows": 1548
+  },
+  "wall_s": 12.9
+}

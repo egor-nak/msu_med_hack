@@ -1,0 +1,266 @@
+{
+ "n_hemo": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {}
+ },
+ "n_mvp": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "features": "mvp",
+   "hp_hz": 0.0,
+   "lp_hz": 0.0
+  }
+ },
+ "n_cbsi": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "signal": "cbsi"
+  }
+ },
+ "n_regions": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "spatial": "regions"
+  }
+ },
+ "n_gsr": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "gsr": true
+  }
+ },
+ "n_lags0-8": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "lags_s": [
+    0,
+    2,
+    4,
+    6,
+    8
+   ]
+  }
+ },
+ "n_lags0-4": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "lags_s": [
+    0,
+    2,
+    4
+   ]
+  }
+ },
+ "n_base15": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "base_tau_s": 15.0
+  }
+ },
+ "n_base30": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "base_tau_s": 30.0
+  }
+ },
+ "n_lr": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "classifier": "lr",
+   "C": 0.1
+  }
+ },
+ "n_cascade": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "classifier": "cascade"
+  }
+ },
+ "n_level_only": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "use_slope": false
+  }
+ },
+ "n_slope_only": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  },
+  "nirs": {
+   "use_level": false
+  }
+ },
+ "n_tau0": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5,
+   "nirs_tau_s": 0.0
+  },
+  "nirs": {}
+ },
+ "n_tau2": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5,
+   "nirs_tau_s": 2.0
+  },
+  "nirs": {}
+ },
+ "n_tau4": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.5,
+   "nirs_tau_s": 4.0
+  },
+  "nirs": {}
+ }
+}

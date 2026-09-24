@@ -1,0 +1,10 @@
+{
+  "cfg": {
+    "preset": "b1fix",
+    "eeg": {
+      "channels": "sensorimotor9"
+    }
+  },
+  "loso": null,
+  "n_sessions": 56
+}

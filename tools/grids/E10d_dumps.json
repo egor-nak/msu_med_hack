@@ -1,0 +1,132 @@
+{
+ "D_norm_T1_k4": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5,
+   "mdm_metric": "logeuclid",
+   "logit_T": 1
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0,
+   "logit_T": 1
+  },
+  "global": {
+   "enabled": true,
+   "k": 4,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  }
+ },
+ "D_norm_T0.5_k4": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5,
+   "mdm_metric": "logeuclid",
+   "logit_T": 0.5
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0,
+   "logit_T": 1
+  },
+  "global": {
+   "enabled": true,
+   "k": 4,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  }
+ },
+ "D_norm_T2_k4": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5,
+   "mdm_metric": "logeuclid",
+   "logit_T": 2
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0,
+   "logit_T": 1
+  },
+  "global": {
+   "enabled": true,
+   "k": 4,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  }
+ },
+ "D_norm_T1_k2": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5,
+   "mdm_metric": "logeuclid",
+   "logit_T": 1
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0,
+   "logit_T": 1
+  },
+  "global": {
+   "enabled": true,
+   "k": 2,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  }
+ },
+ "D_norm_T1_k8": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5,
+   "mdm_metric": "logeuclid",
+   "logit_T": 1
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0,
+   "logit_T": 1
+  },
+  "global": {
+   "enabled": true,
+   "k": 8,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  }
+ }
+}

@@ -1,0 +1,111 @@
+{
+  "status": "ok",
+  "session": "/Users/egornakonecnyj/Desktop/2503-support-academy-oligomery-1d85e81/data/train/2026.03.26.14.21.39_N17.mat",
+  "hybrid": {
+    "confusion": [
+      [
+        684,
+        56,
+        24
+      ],
+      [
+        52,
+        282,
+        101
+      ],
+      [
+        37,
+        47,
+        263
+      ]
+    ],
+    "f1": {
+      "1": 0.8900455432661027,
+      "2": 0.6878048780487804,
+      "3": 0.7156462585034014
+    },
+    "min_f1": 0.6878048780487804,
+    "macro_recall": 0.7650555832008467,
+    "n_windows": 1546
+  },
+  "nirs_only": {
+    "confusion": [
+      [
+        649,
+        122,
+        42
+      ],
+      [
+        87,
+        207,
+        121
+      ],
+      [
+        37,
+        56,
+        225
+      ]
+    ],
+    "f1": {
+      "1": 0.8184110970996217,
+      "2": 0.5175,
+      "3": 0.6373937677053825
+    },
+    "min_f1": 0.5175,
+    "macro_recall": 0.6523817577797919,
+    "n_windows": 1546
+  },
+  "timings": {
+    "predict_mean_s": 0.0013251817593790424,
+    "predict_max_s": 0.032595,
+    "fit_mean_s": 0.5443741428571428,
+    "fit_max_s": 0.848232,
+    "n_predict": 1546,
+    "n_fit": 7,
+    "penalty_predict": 0,
+    "penalty_fit": 0,
+    "penalty_total": 0
+  },
+  "score": {
+    "base_quality": 64.22,
+    "nirs_bonus": {
+      "present": true,
+      "points": 12.7625,
+      "min_f1": 0.5175,
+      "macro_recall": 0.6523817577797919,
+      "detail": "валидная NIRS-only матрица"
+    },
+    "engineering": 0.0,
+    "penalties": 0,
+    "total": 76.9825,
+    "max_possible": 130.0
+  },
+  "eeg_only": {
+    "confusion": [
+      [
+        561,
+        56,
+        49
+      ],
+      [
+        99,
+        252,
+        104
+      ],
+      [
+        113,
+        77,
+        235
+      ]
+    ],
+    "f1": {
+      "1": 0.7797081306462822,
+      "2": 0.6,
+      "3": 0.5781057810578106
+    },
+    "min_f1": 0.5781057810578106,
+    "macro_recall": 0.6619864709160664,
+    "n_windows": 1546
+  },
+  "wall_s": 8.3
+}

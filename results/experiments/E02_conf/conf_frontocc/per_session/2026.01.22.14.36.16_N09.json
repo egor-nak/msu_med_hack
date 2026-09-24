@@ -1,0 +1,83 @@
+{
+  "status": "ok",
+  "session": "/Users/egornakonecnyj/Desktop/2503-support-academy-oligomery-1d85e81/data/train/2026.01.22.14.36.16_N09.mat",
+  "hybrid": {
+    "confusion": [
+      [
+        430,
+        43,
+        38
+      ],
+      [
+        208,
+        183,
+        198
+      ],
+      [
+        136,
+        163,
+        151
+      ]
+    ],
+    "f1": {
+      "1": 0.669260700389105,
+      "2": 0.37423312883435583,
+      "3": 0.36081242532855434
+    },
+    "min_f1": 0.36081242532855434,
+    "macro_recall": 0.47205781736779534,
+    "n_windows": 1550
+  },
+  "nirs_only": null,
+  "timings": {
+    "predict_mean_s": 6.777806451612903e-05,
+    "predict_max_s": 0.005585,
+    "fit_mean_s": 0.022568571428571427,
+    "fit_max_s": 0.039418,
+    "n_predict": 1550,
+    "n_fit": 7,
+    "penalty_predict": 0,
+    "penalty_fit": 0,
+    "penalty_total": 0
+  },
+  "score": {
+    "base_quality": 35.8105,
+    "nirs_bonus": {
+      "present": false,
+      "points": 0.0,
+      "detail": "нет y_nirs"
+    },
+    "engineering": 0.0,
+    "penalties": 0,
+    "total": 35.8105,
+    "max_possible": 130.0
+  },
+  "eeg_only": {
+    "confusion": [
+      [
+        430,
+        43,
+        38
+      ],
+      [
+        208,
+        183,
+        198
+      ],
+      [
+        136,
+        163,
+        151
+      ]
+    ],
+    "f1": {
+      "1": 0.669260700389105,
+      "2": 0.37423312883435583,
+      "3": 0.36081242532855434
+    },
+    "min_f1": 0.36081242532855434,
+    "macro_recall": 0.47205781736779534,
+    "n_windows": 1550
+  },
+  "wall_s": 1.2
+}

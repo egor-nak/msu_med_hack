@@ -1,0 +1,46 @@
+{
+ "conf_heog:hyb_min_f1~hyb_min_f1": {
+  "spearman_r": 0.16975683113946652,
+  "p": 0.2110098282553942
+ },
+ "conf_heog:eeg_auc_lr~hyb_auc_lr": {
+  "spearman_r": 0.31169896460325197,
+  "p": 0.0193602152822397
+ },
+ "conf_heog:eeg_auc_rest_im~hyb_auc_rest_im": {
+  "spearman_r": -0.1672960918920251,
+  "p": 0.21779961789226315
+ },
+ "conf_heog:regression_minf1": {
+  "slope": 0.28972774589218925,
+  "intercept": 0.4210949973677659,
+  "r2": 0.016542132876554164,
+  "p": 0.3448125318968075
+ },
+ "conf_fes:hyb_min_f1~hyb_min_f1": {
+  "spearman_r": 0.2735475051264525,
+  "p": 0.04135416640672793
+ },
+ "conf_fes:eeg_auc_lr~hyb_auc_lr": {
+  "spearman_r": 0.3543866846459561,
+  "p": 0.007367655665108294
+ },
+ "conf_fes:eeg_auc_rest_im~hyb_auc_rest_im": {
+  "spearman_r": 0.4419685577580315,
+  "p": 0.0006490812002253594
+ },
+ "conf_fes:regression_minf1": {
+  "slope": 0.5267459459089443,
+  "intercept": 0.33958975313915196,
+  "r2": 0.08440727392502359,
+  "p": 0.029842289090744406
+ },
+ "fes_strength~hyb_min_f1": {
+  "spearman_r": 0.43287764866712236,
+  "p": 0.000861749993162954
+ },
+ "fes_strength~eeg_auc_rest_im": {
+  "spearman_r": 0.28988380041011624,
+  "p": 0.03022475756780896
+ }
+}

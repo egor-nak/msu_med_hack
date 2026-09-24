@@ -1,0 +1,182 @@
+{
+ "B_tsmdm_rcall_loglinear_global": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0
+  },
+  "global": {
+   "enabled": true,
+   "k": 4,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  },
+  "fusion": {
+   "mode": "loglinear"
+  },
+  "bias": {
+   "mode": "global"
+  },
+  "_loso": "results/artifacts_exp/F_B_tsmdm_rcall_loglinear/loso"
+ },
+ "B_tsmdm_rcall_loglinear_session": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0
+  },
+  "global": {
+   "enabled": true,
+   "k": 4,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  },
+  "fusion": {
+   "mode": "loglinear"
+  },
+  "bias": {
+   "mode": "session"
+  },
+  "_loso": "results/artifacts_exp/F_B_tsmdm_rcall_loglinear/loso"
+ },
+ "B_tsmdm_rcall_stacking_global": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0
+  },
+  "global": {
+   "enabled": true,
+   "k": 4,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  },
+  "fusion": {
+   "mode": "stacking"
+  },
+  "bias": {
+   "mode": "global"
+  },
+  "_loso": "results/artifacts_exp/F_B_tsmdm_rcall_stacking/loso"
+ },
+ "B_tsmdm_rcall_stacking_session": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0
+  },
+  "global": {
+   "enabled": true,
+   "k": 4,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  },
+  "fusion": {
+   "mode": "stacking"
+  },
+  "bias": {
+   "mode": "session"
+  },
+  "_loso": "results/artifacts_exp/F_B_tsmdm_rcall_stacking/loso"
+ },
+ "A_ts_rcall_loglinear_global": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0
+  },
+  "global": {
+   "enabled": true,
+   "k": 4,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  },
+  "fusion": {
+   "mode": "loglinear"
+  },
+  "bias": {
+   "mode": "global"
+  },
+  "_loso": "results/artifacts_exp/F_A_ts_rcall_loglinear/loso"
+ },
+ "A_ts_rcall_loglinear_session": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "nirs": {
+   "use_level": false,
+   "hp_hz": 0.0
+  },
+  "global": {
+   "enabled": true,
+   "k": 4,
+   "recenter": "all"
+  },
+  "smoothing": {
+   "tau_s": 0.0,
+   "nirs_tau_s": 0.0
+  },
+  "fusion": {
+   "mode": "loglinear"
+  },
+  "bias": {
+   "mode": "session"
+  },
+  "_loso": "results/artifacts_exp/F_A_ts_rcall_loglinear/loso"
+ }
+}

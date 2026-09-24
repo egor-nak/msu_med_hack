@@ -1,0 +1,64 @@
+{
+  "cfg": {
+    "eeg": {
+      "features": "ts",
+      "channels": "sensorimotor11",
+      "reference": "car_clean",
+      "cov": "oas",
+      "mean": "logeuclid",
+      "classifier": "slda",
+      "cov_avg_n": 5,
+      "bands": [
+        [
+          4,
+          8
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          16,
+          20
+        ],
+        [
+          20,
+          24
+        ],
+        [
+          24,
+          30
+        ],
+        [
+          30,
+          40
+        ],
+        [
+          40,
+          60
+        ],
+        [
+          60,
+          80
+        ],
+        [
+          80,
+          90
+        ],
+        [
+          90,
+          100
+        ]
+      ]
+    },
+    "smoothing": {
+      "tau_s": 0.0
+    }
+  },
+  "loso": "/Users/egornakonecnyj/Desktop/2503-support-academy-oligomery-1d85e81/results/artifacts_exp/g_sm11_avg5/loso",
+  "n_sessions": 56
+}

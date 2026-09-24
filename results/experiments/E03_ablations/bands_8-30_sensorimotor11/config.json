@@ -1,0 +1,28 @@
+{
+  "cfg": {
+    "preset": "b1fix",
+    "eeg": {
+      "channels": "sensorimotor11",
+      "bands": [
+        [
+          8,
+          12
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          16,
+          24
+        ],
+        [
+          24,
+          30
+        ]
+      ]
+    }
+  },
+  "loso": null,
+  "n_sessions": 56
+}

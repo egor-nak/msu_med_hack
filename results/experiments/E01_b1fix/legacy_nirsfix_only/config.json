@@ -1,0 +1,9 @@
+{
+  "cfg": {
+    "_impl": "b1fix_classifier",
+    "ema_mode": "dt",
+    "nirs_scale": "fit"
+  },
+  "loso": null,
+  "n_sessions": 56
+}

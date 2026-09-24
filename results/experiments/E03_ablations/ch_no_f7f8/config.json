@@ -1,0 +1,10 @@
+{
+  "cfg": {
+    "preset": "b1fix",
+    "eeg": {
+      "channels": "no_f7f8"
+    }
+  },
+  "loso": null,
+  "n_sessions": 56
+}

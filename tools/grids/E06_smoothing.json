@@ -1,0 +1,178 @@
+{
+ "tau0": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 0
+  }
+ },
+ "tau0.5": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 0.5
+  }
+ },
+ "tau1": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 1
+  }
+ },
+ "tau2": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 2
+  }
+ },
+ "tau3": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 3
+  }
+ },
+ "tau4": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda"
+  },
+  "smoothing": {
+   "tau_s": 4
+  }
+ },
+ "skip0.5": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "train_skip_s": 0.5
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "skip1.0": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "train_skip_s": 1.0
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "covavg3": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 3
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "covavg5": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "covavg8": {
+  "eeg": {
+   "features": "ts",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 8
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "mdm_covavg5": {
+  "eeg": {
+   "features": "mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ },
+ "tsmdm_covavg5": {
+  "eeg": {
+   "features": "ts+mdm",
+   "channels": "sensorimotor11",
+   "reference": "car_clean",
+   "cov": "oas",
+   "mean": "logeuclid",
+   "classifier": "slda",
+   "cov_avg_n": 5
+  },
+  "smoothing": {
+   "tau_s": 0.0
+  }
+ }
+}

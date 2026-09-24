@@ -1,0 +1,75 @@
+{
+ "n_candidates": 20,
+ "folds": [
+  {
+   "fold": [
+    "N06",
+    "N15"
+   ],
+   "choice": "E10_fusion/G_biasS",
+   "inner_score": 61.903
+  },
+  {
+   "fold": [
+    "N03",
+    "N16"
+   ],
+   "choice": "E10_fusion/G_biasS",
+   "inner_score": 61.722
+  },
+  {
+   "fold": [
+    "N01",
+    "N10"
+   ],
+   "choice": "E10_fusion/G_biasS",
+   "inner_score": 60.597
+  },
+  {
+   "fold": [
+    "N09",
+    "N14"
+   ],
+   "choice": "E10_fusion/G_biasS",
+   "inner_score": 62.507
+  },
+  {
+   "fold": [
+    "N08",
+    "N17"
+   ],
+   "choice": "E10_fusion/G_biasS",
+   "inner_score": 59.808
+  },
+  {
+   "fold": [
+    "N11",
+    "N13"
+   ],
+   "choice": "E10_fusion/G_biasS",
+   "inner_score": 57.686
+  },
+  {
+   "fold": [
+    "N18",
+    "N02"
+   ],
+   "choice": "E10_fusion/G_biasS",
+   "inner_score": 60.373
+  }
+ ],
+ "nested": {
+  "F": 0.5067027404073297,
+  "P": 0.6400057739313415,
+  "NF": 0.40323282999500615,
+  "score": 60.650830092305114
+ },
+ "winner_on_all": "E10_fusion/G_biasS",
+ "winner_loso": {
+  "F": 0.5067027404073297,
+  "P": 0.6400057739313415,
+  "NF": 0.40323282999500615,
+  "score": 60.650830092305114
+ },
+ "optimism": 0.0
+}

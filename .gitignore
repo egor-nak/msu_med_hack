@@ -1,0 +1,15 @@
+data/
+*.mat
+*.part
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.DS_Store
+# большие/промежуточные выходы экспериментов (метрики, конфиги и сводки коммитятся)
+results/experiments/*/*/runs/
+results/experiments/*/runs/
+results/experiments/*/*/dumps/
+results/experiments/*/dumps/
+results/cache/
+results/artifacts_exp/
+solution/artifacts/loso/

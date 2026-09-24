@@ -1,0 +1,20 @@
+{
+ "mu_lat_auc_median": 0.6760204081632653,
+ "early_erd_db_mean": -2.74603993764045,
+ "mu_lat_auc~eeg_auc_lr": {
+  "spearman_r": 0.6431931933033701,
+  "p": 9.000936983755582e-08
+ },
+ "mu_lat_auc~hyb_min_f1": {
+  "spearman_r": 0.6582877522078163,
+  "p": 3.510284003641571e-08
+ },
+ "early_erd_db~eeg_auc_rest_im": {
+  "spearman_r": -0.7190704032809295,
+  "p": 4.3156743391729e-10
+ },
+ "early_erd_db~hyb_min_f1": {
+  "spearman_r": -0.681613123718387,
+  "p": 7.346072275436124e-09
+ }
+}
