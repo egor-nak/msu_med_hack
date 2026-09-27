@@ -9,3 +9,4 @@ results/metrics/runs/
 solution/artifacts/loso/
 *.mat
 .git/
+CLAUDE_CODE_TASK.md
