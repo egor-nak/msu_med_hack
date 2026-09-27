@@ -13,5 +13,4 @@ results/experiments/*/dumps/
 results/cache/
 results/artifacts_exp/
 solution/artifacts/loso/
-CLAUDE_CODE_TASK.md # чтобы случайно не добавить снова
 CLAUDE_CODE_TASK.md
