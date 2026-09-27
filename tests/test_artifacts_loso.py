@@ -17,20 +17,29 @@ def run(art: Path) -> list[str]:
     loso = art / "loso"
     subs = sorted(p for p in loso.iterdir() if p.is_dir()) if loso.exists() else []
     for d in subs:
-        f = d / "global_eeg.joblib"
-        if not f.exists():
-            continue
-        files = joblib.load(f)["meta"]["train_files"]
-        bad = [x for x in files if Path(x).stem.split("_")[-1] == d.name]
-        if bad:
-            errs.append(f"{d.name}: в обучении есть сессии субъекта: {bad[:3]}")
-        if not files:
-            errs.append(f"{d.name}: пустой train_files")
+        for fname in ("global_eeg.joblib", "csp_filters.joblib"):
+            errs += _check(d, fname)
     g = art / "global_eeg.joblib"
     if g.exists():
         subj = {Path(x).stem.split("_")[-1] for x in joblib.load(g)["meta"]["train_files"]}
         print(f"финальная глобальная модель: {len(subj)} субъектов")
-    print(f"проверено LOSO-моделей: {len(subs)}")
+    print(f"проверено LOSO-каталогов: {len(subs)}")
+    return errs
+
+
+def _check(d: Path, fname: str) -> list[str]:
+    """train_files модели в каталоге субъекта d не содержат его сессий (CSP коллеги без train_files — пропуск)."""
+    errs = []
+    f = d / fname
+    if f.exists():
+        files = joblib.load(f)["meta"].get("train_files")
+        if not isinstance(files, list):
+            return errs
+        bad = [x for x in files if Path(x).stem.split("_")[-1] == d.name]
+        if bad:
+            errs.append(f"{d.name}/{fname}: в обучении есть сессии субъекта: {bad[:3]}")
+        if not files:
+            errs.append(f"{d.name}/{fname}: пустой train_files")
     return errs
 
 

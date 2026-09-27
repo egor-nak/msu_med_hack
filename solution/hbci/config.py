@@ -44,7 +44,7 @@ LAPLACIAN = {
 DEFAULTS: dict[str, Any] = {
     "eeg": {
         "enabled": True,
-        "features": "ts",              # ts | logpower | mdm | ts+mdm | csp | heog
+        "features": "ts",              # ts | logpower | mdm | ts+mdm | csp | heog | csponly
         "channels": "sensorimotor11",  # имя из CHANNEL_SETS или список имён
         "reference": "car_clean",      # none | car_clean | laplacian
         "hp_hz": 0.5,                  # 0 — без ВЧ-фильтра (как MVP)
@@ -65,6 +65,14 @@ DEFAULTS: dict[str, Any] = {
         "bad_channels": True,
         "bad_flat_frac": 0.05,         # доля «плоских» отсчётов (клиппинг/обрыв)
         "bad_ratio": 8.0,              # мощность канала / медиана по каналам > ratio — шумный контакт
+        "csp": {                       # CSP + лог-мощность + асимметрия (векторизатор коллеги), hbci/csp.py
+            "enabled": False,
+            "file": "csp_filters.joblib",   # обученные офлайн фильтры (numpy): tools/convert_csp.py | train_csp.py
+            "prep": "raw",             # вход CSP: "raw" (сырые отсчёты, как обучена CSP коллеги) | [lo, hi] Гц
+            "avg_n": 1,                # усреднение CSP-ковариаций по окнам сетки
+            "use_csp": True, "use_power": True, "use_asym": True,
+            "symmetry": [["c3", "c4"], ["f3", "f4"], ["p3", "p4"], ["c7", "c8"]],
+        },
         "heog_tau_s": 20.0,            # только для контрольного heog-декодера
         "heog_band": [0.1, 3.0],
     },

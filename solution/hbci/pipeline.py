@@ -26,6 +26,7 @@ import joblib
 import numpy as np
 
 from .config import Config
+from .csp import CSP_CHANNELS, CSPArtifact, features_from_cov
 from .eeg import EEGFrontEnd, spatial_matrix, transform
 from .fusion import calibrate_bias, fuse
 from .models import CLASSES, GlobalEEG, csp_features, fit_csp, fit_linear, fit_mdm, fit_ts_mdm, log_softmax
@@ -79,6 +80,10 @@ class HybridDecoder:
         self.glob_isqrt: np.ndarray | None = None
         self.fusion_file: dict[str, Any] = {}
         self._lcache: dict[tuple, dict] = {}
+        # CSP + лог-мощность + асимметрия (фильтры обучены офлайн, здесь только применяются)
+        self.csp_cfg = e.get("csp") or {}
+        self.csp: CSPArtifact | None = None
+        self.M_csp: np.ndarray | None = None
         self.b_sess: dict[str, np.ndarray] = {}
         self.bias_cur = {k: np.asarray(cfg.bias["fixed"], dtype=float) for k in ("hyb", "eeg", "nirs")}
         sm = cfg.smoothing
@@ -107,6 +112,17 @@ class HybridDecoder:
             if p.exists():
                 self.glob = GlobalEEG.from_dict(joblib.load(p))
                 self.glob.check_compatible(self.cfg.eeg, self.fe.channels)
+        if self.csp_cfg.get("enabled"):
+            if not self.csp_cfg.get("use_csp", True):
+                # только лог-мощность/асимметрия: CSP-файл не нужен, каналы — порядок chan_dict
+                self.csp = CSPArtifact(np.zeros((0, len(CSP_CHANNELS))), list(CSP_CHANNELS), self.csp_cfg["prep"],
+                                       {"note": "без CSP-фильтров"})
+            else:
+                p = (d / self.csp_cfg["file"]) if d is not None else None
+                if p is None or not p.exists():
+                    raise FileNotFoundError(f"eeg.csp.enabled, но нет файла CSP: {p}")
+                self.csp = CSPArtifact.from_dict(joblib.load(p))
+            self.csp.check(self.fe.names, self.csp_cfg["prep"])
         if d is not None and self.cfg.fusion["use_file"]:
             p = d / self.cfg.fusion["file"]
             if p.exists():
@@ -145,6 +161,22 @@ class HybridDecoder:
             acc += self.fe.S[np.maximum(k - j, 0)]
         return acc / n
 
+    def _A(self, k: np.ndarray) -> np.ndarray:
+        """Вспомогательные (CSP) ковариации окон сетки k, при csp.avg_n > 1 — среднее n последних окон."""
+        n = int(self.csp_cfg.get("avg_n", 1))
+        k = np.asarray(k)
+        acc = self.fe.A[k].copy()
+        for j in range(1, n):
+            acc += self.fe.A[np.maximum(k - j, 0)]
+        return acc / n
+
+    def _csp_block(self, A: np.ndarray) -> np.ndarray:
+        """CSP log-var + лог-мощность + асимметрия для батча вспомогательных ковариаций (N, 21, 21)."""
+        c = self.csp_cfg
+        sym = [tuple(p) for p in c.get("symmetry", [])] if c.get("use_asym", True) else None
+        return features_from_cov(transform(A, self.M_csp), self.csp.filters, self.csp.channels, sym,
+                                 use_csp=c.get("use_csp", True), use_power=c.get("use_power", True))
+
     def _S_current(self) -> tuple[np.ndarray, np.ndarray | None]:
         k = self.fe.index_of(self.t)
         S, H = self.fe.current()
@@ -175,8 +207,9 @@ class HybridDecoder:
             c["n"] = self.fe.K
         return expm_sym(c["sum"] / c["n"])
 
-    def _session_inputs(self, S: np.ndarray, H: np.ndarray | None) -> dict[str, np.ndarray]:
-        """Входы сессионной модели для батча окон S (N, B, 21, 21)."""
+    def _session_inputs(self, S: np.ndarray, H: np.ndarray | None,
+                        A: np.ndarray | None = None) -> dict[str, np.ndarray]:
+        """Входы сессионной модели для батча окон S (N, B, 21, 21); A — CSP-ковариации (N, 21, 21)."""
         f = self.feat
         out: dict[str, np.ndarray] = {}
         if f == "logpower":
@@ -196,6 +229,8 @@ class HybridDecoder:
                         del out["X"]
                 else:
                     out["Cw"] = Cw
+        elif f == "csponly":
+            pass  # только блок CSP/мощность/асимметрия (ниже) — векторизатор коллеги как самостоятельный вход
         elif f == "csp":
             C = self._cov(S, self.M)
             out["C"] = C
@@ -203,6 +238,9 @@ class HybridDecoder:
                 out["X"] = csp_features(C, self.csp_W)
         else:
             raise ValueError(f"eeg.features={f!r}")
+        if self.csp is not None and A is not None and self.M_csp is not None:
+            extra = self._csp_block(A)          # только во вход sLDA; MDM остаётся на чистой TS-геометрии
+            out["X"] = np.hstack([out["X"], extra]) if "X" in out else extra
         return out
 
     @staticmethod
@@ -248,6 +286,12 @@ class HybridDecoder:
         S = self._S(k)
         H = self.fe.H[k] if self.fe.heog_on else None
         e = self.cfg.eeg
+        A = None
+        if self.csp is not None:
+            if self.M_csp is None:  # фиксированный порядок каналов CSP; плохие каналы — интерполяция соседями
+                self.M_csp, _ = spatial_matrix(self.fe.names, self.csp.channels, "none",
+                                               self.fe.bad_channels(), interpolate=True)
+            A = self._A(k)
         # --- маска плохих каналов и референс (по прошлым данным)
         bad = self.fe.bad_channels() if self.feat != "heog" else set()
         self.M, self.ch_sess = spatial_matrix(self.fe.names, self.fe.channels, e["reference"], bad)
@@ -255,7 +299,7 @@ class HybridDecoder:
             self.cref_isqrt = invsqrtm_spd(self._ref_mean(self.M, e["cov"], e["cov_eps"], e["mean"]))
         if self.feat == "csp":
             self.csp_W = fit_csp(self._cov(S[tr], self.M), y[tr], int(e["csp_n"]))
-        inp = self._session_inputs(S, H)
+        inp = self._session_inputs(S, H, A)
         self.m_lin, self.m_mdm = self._fit_session(inp, y, tr)
         # --- глобальная модель: M (с интерполяцией плохих, фиксируется по блоку 1) и Cref:
         #     recenter="block1" — по окнам блока 1 (как при обучении), "all" — по всем прошлым окнам
@@ -378,7 +422,12 @@ class HybridDecoder:
         S1 = S[None]
         ls = None
         if self.m_lin is not None or self.m_mdm is not None:
-            ls = self._session_logp(self._session_inputs(S1, None if H is None else H[None]), self.m_lin, self.m_mdm)
+            A1 = None
+            if self.csp is not None:
+                k_cur = self.fe.index_of(self.t)
+                A1 = self._A(np.array([k_cur])) if k_cur is not None else self.fe.current_aux()[None]
+            ls = self._session_logp(self._session_inputs(S1, None if H is None else H[None], A1),
+                                    self.m_lin, self.m_mdm)
         lg = self._global_logp(S1)
         le = self._mix(ls, lg, self.n_blocks)[0]
         le_s = self.ema_eeg(le)

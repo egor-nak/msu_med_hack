@@ -5,3 +5,4 @@ tabulate==0.9.0
 nbformat==5.11.1
 nbconvert==7.17.1
 ipykernel==7.3.0
+mne==1.13.2            # только офлайн: чтение/обучение CSP (tools/convert_csp.py, tools/train_csp.py)

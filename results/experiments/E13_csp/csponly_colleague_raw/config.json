@@ -1,0 +1,31 @@
+{
+  "cfg": {
+    "eeg": {
+      "features": "csponly",
+      "channels": "sensorimotor11",
+      "csp": {
+        "enabled": true,
+        "prep": "raw"
+      },
+      "logit_T": 1
+    },
+    "global": {
+      "enabled": false
+    },
+    "nirs": {
+      "use_level": false,
+      "hp_hz": 0.0,
+      "logit_T": 1
+    },
+    "smoothing": {
+      "tau_s": 0.0,
+      "nirs_tau_s": 0.0
+    },
+    "bias": {
+      "mode": "none"
+    },
+    "_loso": "results/artifacts_exp/csp_colleague/loso"
+  },
+  "loso": "results/artifacts_exp/csp_colleague/loso",
+  "n_sessions": 56
+}
