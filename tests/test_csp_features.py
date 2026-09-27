@@ -56,7 +56,7 @@ def run(path) -> dict:
     x0 = s["eeg"][0]
     win = np.stack([(s["eeg"][e - 250:e] - x0)[:, ix].T for e in fe.ends[ks]])      # (n, 11, 250)
     ref = vectorize_windows(win, art.filters, art.channels, SYM)
-    got = features_from_cov(fe.A[ks][:, ix][:, :, ix], art.filters, art.channels, SYM)
+    got = features_from_cov(fe.A[ks, 0][:, ix][:, :, ix], art.filters, art.channels, SYM)
     out = {"n": len(ks), "dim": ref.shape[1], "max_abs_diff_cov_vs_signal": float(np.abs(ref - got).max())}
     try:
         import mne  # noqa: F401

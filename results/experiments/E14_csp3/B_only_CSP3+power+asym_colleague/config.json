@@ -1,0 +1,55 @@
+{
+  "cfg": {
+    "eeg": {
+      "features": "csponly",
+      "channels": "sensorimotor11",
+      "logit_T": 1,
+      "csp": {
+        "enabled": true,
+        "models": [
+          {
+            "file": "csp_4-15Hz.joblib",
+            "prep": [
+              4,
+              15
+            ]
+          },
+          {
+            "file": "csp_15-25Hz.joblib",
+            "prep": [
+              15,
+              25
+            ]
+          },
+          {
+            "file": "csp_25-30Hz.joblib",
+            "prep": [
+              25,
+              30
+            ]
+          }
+        ],
+        "use_power": true,
+        "use_asym": true
+      }
+    },
+    "global": {
+      "enabled": false
+    },
+    "nirs": {
+      "use_level": false,
+      "hp_hz": 0.0,
+      "logit_T": 1
+    },
+    "smoothing": {
+      "tau_s": 0.0,
+      "nirs_tau_s": 0.0
+    },
+    "bias": {
+      "mode": "none"
+    },
+    "_loso": "results/artifacts_exp/csp3_colleague/loso"
+  },
+  "loso": "results/artifacts_exp/csp3_colleague/loso",
+  "n_sessions": 56
+}

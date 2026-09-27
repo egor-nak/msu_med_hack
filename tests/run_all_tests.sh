@@ -18,4 +18,5 @@ echo "=== особые сессии";  "$PY" test_edge_sessions.py "$D" 2>/dev/n
 echo "=== тайминги";       "$PY" test_timing.py | tail -2
 echo "=== LOSO-артефакты"; "$PY" test_artifacts_loso.py | tail -1
 echo "=== CSP-признаки";   "$PY" test_csp_features.py | tail -1
+echo "=== три полосовые CSP"; "$PY" test_csp_bands.py | tail -1
 echo "ВСЕ ТЕСТЫ ПРОЙДЕНЫ"

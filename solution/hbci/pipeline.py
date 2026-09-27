@@ -26,7 +26,7 @@ import joblib
 import numpy as np
 
 from .config import Config
-from .csp import CSP_CHANNELS, CSPArtifact, features_from_cov
+from .csp import CSP_CHANNELS, CSPArtifact, csp_models, features_from_cov
 from .eeg import EEGFrontEnd, spatial_matrix, transform
 from .fusion import calibrate_bias, fuse
 from .models import CLASSES, GlobalEEG, csp_features, fit_csp, fit_linear, fit_mdm, fit_ts_mdm, log_softmax
@@ -82,8 +82,8 @@ class HybridDecoder:
         self._lcache: dict[tuple, dict] = {}
         # CSP + лог-мощность + асимметрия (фильтры обучены офлайн, здесь только применяются)
         self.csp_cfg = e.get("csp") or {}
-        self.csp: CSPArtifact | None = None
-        self.M_csp: np.ndarray | None = None
+        self.csp: list[CSPArtifact] | None = None       # по одной CSP на полосу (порядок = eeg.csp.models)
+        self.M_csp: list[np.ndarray] | None = None
         self.b_sess: dict[str, np.ndarray] = {}
         self.bias_cur = {k: np.asarray(cfg.bias["fixed"], dtype=float) for k in ("hyb", "eeg", "nirs")}
         sm = cfg.smoothing
@@ -113,16 +113,20 @@ class HybridDecoder:
                 self.glob = GlobalEEG.from_dict(joblib.load(p))
                 self.glob.check_compatible(self.cfg.eeg, self.fe.channels)
         if self.csp_cfg.get("enabled"):
-            if not self.csp_cfg.get("use_csp", True):
-                # только лог-мощность/асимметрия: CSP-файл не нужен, каналы — порядок chan_dict
-                self.csp = CSPArtifact(np.zeros((0, len(CSP_CHANNELS))), list(CSP_CHANNELS), self.csp_cfg["prep"],
-                                       {"note": "без CSP-фильтров"})
-            else:
-                p = (d / self.csp_cfg["file"]) if d is not None else None
-                if p is None or not p.exists():
-                    raise FileNotFoundError(f"eeg.csp.enabled, но нет файла CSP: {p}")
-                self.csp = CSPArtifact.from_dict(joblib.load(p))
-            self.csp.check(self.fe.names, self.csp_cfg["prep"])
+            self.csp = []
+            for m in csp_models(self.csp_cfg):
+                if not self.csp_cfg.get("use_csp", True):
+                    # только лог-мощность/асимметрия: CSP-файл не нужен
+                    art = CSPArtifact(np.zeros((0, len(m.get("channels", CSP_CHANNELS)))),
+                                      list(m.get("channels", CSP_CHANNELS)), m["prep"], {"note": "без CSP-фильтров"},
+                                      m.get("reference", "none"))
+                else:
+                    p = (d / m["file"]) if d is not None else None
+                    if p is None or not p.exists():
+                        raise FileNotFoundError(f"eeg.csp.enabled, но нет файла CSP: {p}")
+                    art = CSPArtifact.from_dict(joblib.load(p))
+                art.check(self.fe.names, m["prep"])
+                self.csp.append(art)
         if d is not None and self.cfg.fusion["use_file"]:
             p = d / self.cfg.fusion["file"]
             if p.exists():
@@ -171,11 +175,28 @@ class HybridDecoder:
         return acc / n
 
     def _csp_block(self, A: np.ndarray) -> np.ndarray:
-        """CSP log-var + лог-мощность + асимметрия для батча вспомогательных ковариаций (N, 21, 21)."""
+        """Признаки по всем полосам CSP для батча вспомогательных ковариаций A (N, полосы, 21, 21).
+
+        Для полосы i: [CSP log-var (n_comp_i)] + [лог-мощность каналов] + [асимметрия пар]; полосы
+        склеиваются по порядку eeg.csp.models. Мощность/асимметрия — только для полос из power_models
+        (по умолчанию все)."""
         c = self.csp_cfg
         sym = [tuple(p) for p in c.get("symmetry", [])] if c.get("use_asym", True) else None
-        return features_from_cov(transform(A, self.M_csp), self.csp.filters, self.csp.channels, sym,
-                                 use_csp=c.get("use_csp", True), use_power=c.get("use_power", True))
+        pw = c.get("power_models")
+        parts = []
+        for i, (art, M) in enumerate(zip(self.csp, self.M_csp)):
+            with_pa = pw is None or i in pw
+            parts.append(features_from_cov(transform(A[:, i], M), art.filters, art.channels,
+                                           sym if with_pa else None, use_csp=c.get("use_csp", True),
+                                           use_power=c.get("use_power", True) and with_pa))
+        return np.concatenate(parts, axis=1)
+
+    def _csp_matrix(self, art: CSPArtifact, bad: set[str]) -> np.ndarray:
+        """Выбор каналов CSP в её порядке (плохие — интерполяция соседями) + референс, как при её обучении."""
+        M, _ = spatial_matrix(self.fe.names, art.channels, "none", bad, interpolate=True)
+        if art.reference == "car":
+            M = M - M.mean(0, keepdims=True)          # общий средний референс по каналам CSP
+        return M
 
     def _S_current(self) -> tuple[np.ndarray, np.ndarray | None]:
         k = self.fe.index_of(self.t)
@@ -289,8 +310,8 @@ class HybridDecoder:
         A = None
         if self.csp is not None:
             if self.M_csp is None:  # фиксированный порядок каналов CSP; плохие каналы — интерполяция соседями
-                self.M_csp, _ = spatial_matrix(self.fe.names, self.csp.channels, "none",
-                                               self.fe.bad_channels(), interpolate=True)
+                bad = self.fe.bad_channels()
+                self.M_csp = [self._csp_matrix(art, bad) for art in self.csp]
             A = self._A(k)
         # --- маска плохих каналов и референс (по прошлым данным)
         bad = self.fe.bad_channels() if self.feat != "heog" else set()

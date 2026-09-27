@@ -21,36 +21,56 @@ import numpy as np
 CHAN_DICT = ["c3", "cz", "c4", "f3", "fz", "f4", "p3", "pz", "p4", "c7", "c8"]
 
 
-def main(src: str, dst: str) -> None:
+def main(src: str, dst: str, band: str | None = None) -> None:
+    """band — "lo,hi" для CSP, обученной на полосовом сигнале (иначе вход "raw")."""
     import mne  # только офлайн (requirements-dev.txt)
     csp = joblib.load(src)
     if not isinstance(csp, mne.decoding.CSP):
         raise TypeError(f"ожидается mne.decoding.CSP, получено {type(csp)}")
-    n = int(csp.n_components)
-    if csp.filters_.shape[1] != len(CHAN_DICT):
-        raise ValueError(f"CSP обучена на {csp.filters_.shape[1]} каналах, chan_dict — {len(CHAN_DICT)}")
     if csp.transform_into != "csp_space" or csp.log is not None:
         raise ValueError("ожидается transform_into='csp_space', log=None (как в векторизаторе коллеги)")
+    n = int(csp.n_components)
+    if csp.info is not None:                      # имена каналов сохранены в объекте — берём их
+        channels = [c.lower() for c in csp.info["ch_names"]]
+        ch_source = "mne.Info в объекте"
+    else:
+        channels = CHAN_DICT
+        ch_source = "chan_dict из кода коллеги (в объекте info=None)"
+    if csp.filters_.shape[1] != len(channels):
+        raise ValueError(f"CSP обучена на {csp.filters_.shape[1]} каналах, список каналов — {len(channels)}")
     Ct = csp.patterns_.T @ csp.patterns_
+    # общий средний референс при обучении ⇔ вектор из единиц в ядре обучающей ковариации и Σ w = 0
+    one = np.ones(len(channels)) / np.sqrt(len(channels))
+    car = bool(np.linalg.norm(Ct @ one) / np.linalg.norm(Ct) < 1e-6
+               and (np.abs(csp.filters_.sum(1)) / np.abs(csp.filters_).sum(1)).max() < 1e-4)
+    prep = "raw" if band is None else [float(x) for x in band.split(",")]
     art = {
         "filters": np.asarray(csp.filters_[:n], dtype=np.float64),
-        "channels": CHAN_DICT,
-        "prep": "raw",
+        "channels": channels,
+        "prep": prep,
+        "reference": "car" if car else "none",
         "meta": {
             "source": str(src), "type": "mne.decoding.CSP", "mne_version": mne.__version__,
-            "params": csp.get_params(), "classes": csp.classes_.tolist(), "n_features_in": int(csp.n_features_in_),
+            "params": {k: v for k, v in csp.get_params().items() if k != "info"},
+            "classes": np.asarray(csp.classes_).tolist(), "n_features_in": int(csp.n_features_in_),
+            "rank": csp.rank if isinstance(csp.rank, (dict, type(None))) else str(csp.rank),
             "sorter": csp.sorter_.tolist(), "mean_power_train": csp.mean_.tolist(), "std_power_train": csp.std_.tolist(),
             "patterns": csp.patterns_[:n].tolist(),
-            "train_channel_log10_var": np.log10(np.diag(Ct)).round(3).tolist(),
-            "channel_order_source": "chan_dict из кода коллеги (в объекте info=None)",
-            "prep_inferred_from": "patterns_.T @ patterns_: var ~1e14-1e15 ADC^2, corr 0.98 → сырые отсчёты",
-            "train_files": "неизвестно (в объекте не хранится) — для оценки на train возможна утечка in-sample",
+            "train_channel_log10_var": np.log10(np.clip(np.diag(Ct), 1e-300, None)).round(3).tolist(),
+            "channel_order_source": ch_source,
+            "reference_inferred": "car: ядро patternsᵀ·patterns = вектор из единиц" if car else "нет",
+            "train_files": "неизвестно (в объекте не хранится); см. report/CSP_AUDIT.md — отпечаток mean_ совпадает "
+                           "со средним по всем 56 сессиям train → оценка на train in-sample",
         },
     }
     Path(dst).parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(art, dst)
-    print(f"→ {dst}: filters {art['filters'].shape}, channels {CHAN_DICT}, prep=raw")
+    print(f"→ {dst}: filters {art['filters'].shape}, channels {channels}, prep={prep}, reference={art['reference']}")
 
 
 if __name__ == "__main__":
-    main(*(sys.argv[1:3] if len(sys.argv) > 2 else ("research/csp/csp_model.joblib", "research/csp/csp_filters_colleague.joblib")))
+    a = sys.argv[1:]
+    if len(a) >= 2:
+        main(a[0], a[1], a[2] if len(a) > 2 else None)
+    else:
+        main("research/csp/csp_model.joblib", "research/csp/csp_filters_colleague.joblib")

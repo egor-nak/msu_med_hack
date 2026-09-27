@@ -92,6 +92,13 @@ def features_from_cov(C: np.ndarray, filters: np.ndarray, channels: list[str],
     return np.concatenate(parts, axis=1)
 
 
+def csp_models(cfg: dict[str, Any]) -> list[dict[str, Any]]:
+    """Список CSP-моделей из секции eeg.csp: {"models": [{"file", "prep"}, ...]} или прежний формат {"file", "prep"}."""
+    if cfg.get("models"):
+        return [dict(m) for m in cfg["models"]]
+    return [{"file": cfg.get("file", "csp_filters.joblib"), "prep": cfg.get("prep", "raw")}]
+
+
 @dataclass
 class CSPArtifact:
     """Обученная (офлайн) CSP в виде numpy: фильтры, порядок каналов, требуемая предобработка."""
@@ -100,11 +107,12 @@ class CSPArtifact:
     channels: list[str]          # порядок входных каналов (нижний регистр, имена io_utils)
     prep: Any                    # "raw" | [lo, hi] — вход, на котором CSP обучалась
     meta: dict[str, Any]
+    reference: str = "none"      # "none" | "car" — общий средний референс по self.channels перед CSP
 
     @classmethod
     def from_dict(cls, d: dict[str, Any]) -> "CSPArtifact":
         return cls(np.asarray(d["filters"], dtype=np.float64), [str(c).lower() for c in d["channels"]],
-                   d["prep"], dict(d.get("meta", {})))
+                   d["prep"], dict(d.get("meta", {})), str(d.get("reference", "none")))
 
     def check(self, all_names: list[str], prep: Any) -> None:
         missing = [c for c in self.channels if c not in all_names]

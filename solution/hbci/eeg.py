@@ -104,12 +104,13 @@ class EEGFrontEnd:
         # полосовой фильтр Баттерворта 4-го порядка после того же ВЧ. Ковариация окна — с вычитанием
         # среднего окна (как np.var в векторизаторе). None — не считается.
         csp = cfg.get("csp") or {}
-        self.aux = csp.get("prep") if csp.get("enabled") else None
-        self.aux_f = None
-        if self.aux is not None and self.aux != "raw":
-            self.aux_f = StreamingSOS(butter_sos(4, list(map(float, self.aux)), fs, "bandpass"))
-        self.A = np.zeros((kmax, self.N, self.N)) if self.aux is not None else None
-        self.aux_tail = np.zeros((0, self.N))
+        from .csp import csp_models
+        self.aux_preps = [m["prep"] for m in csp_models(csp)] if csp.get("enabled") else []
+        self.aux_f = [None if p == "raw" else StreamingSOS(butter_sos(4, list(map(float, p)), fs, "bandpass"))
+                      for p in self.aux_preps]
+        n_aux = len(self.aux_preps)
+        self.A = np.zeros((kmax, n_aux, self.N, self.N)) if n_aux else None   # (K, полосы CSP, 21, 21)
+        self.aux_tail = np.zeros((0, n_aux, self.N))
         # контрольный heog-признак (f7−f8, fp1−fp2; 0.1–3 Гц; минус EMA τ) — только B-conf
         self.heog_on = cfg["features"] == "heog"
         if self.heog_on:
@@ -136,12 +137,12 @@ class EEGFrontEnd:
         self.nflat += n
         self.last_raw = x[-1].copy()
         z = x - self.x0
-        if self.aux == "raw":
-            abuf = np.concatenate([self.aux_tail, z], axis=0)
+        zr = z
         if self.hp is not None:
             z = self.hp(z)
-        if self.aux_f is not None:
-            abuf = np.concatenate([self.aux_tail, self.aux_f(z)], axis=0)
+        if self.A is not None:  # вход каждой CSP: сырые отсчёты или причинная полоса после того же ВЧ
+            aux = np.stack([zr if f is None else f(z) for f in self.aux_f], axis=1)   # (n, n_aux, 21)
+            abuf = np.concatenate([self.aux_tail, aux], axis=0)
         y = self.bank(z)                                  # (n, B, 21)
         buf = np.concatenate([self.tail, y], axis=0)      # buf[0] ↔ отсчёт t − len(tail)
         base = self.t - len(self.tail)
@@ -161,7 +162,7 @@ class EEGFrontEnd:
             if self.A is not None:
                 Aw = abuf[a : a + self.win]
                 Aw = Aw - Aw.mean(0)
-                self.A[k] = Aw.T @ Aw / self.win
+                self.A[k] = np.einsum("tac,tad->acd", Aw, Aw) / self.win
             self.ends[k] = e
             if self.heog_on:
                 self.H[k] = hbuf[a : a + self.win].mean(0) - he[e - 1 - self.t]
@@ -190,7 +191,7 @@ class EEGFrontEnd:
             return self.A[k]
         Aw = self.aux_tail[-self.win :]
         Aw = Aw - Aw.mean(0)
-        return Aw.T @ Aw / max(len(Aw), 1)
+        return np.einsum("tac,tad->acd", Aw, Aw) / max(len(Aw), 1)
 
     def current(self) -> tuple[np.ndarray, np.ndarray | None]:
         """(S, heog) окна, заканчивающегося на текущем t (из сетки или напрямую из хвоста)."""
